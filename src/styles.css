@@ -362,12 +362,47 @@ select:focus {
   gap: 18px;
 }
 
+.seo-section {
+  margin-top: 32px;
+  border-top: 1px solid #ded5c1;
+  padding-top: 28px;
+}
+
+.seo-section > div:first-child {
+  max-width: 860px;
+}
+
+.seo-section p {
+  color: #4f604f;
+  line-height: 1.65;
+}
+
+.seo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.seo-grid article {
+  border: 1px solid #ded5c1;
+  border-radius: 22px;
+  padding: 18px;
+  background: rgb(255 250 240 / 62%);
+}
+
+.seo-grid p {
+  margin-bottom: 0;
+  font-size: 0.94rem;
+}
+
 @media (max-width: 860px) {
   .hero,
   .field-grid,
   .summary-grid,
   .profile-grid,
   .profile-table,
+  .seo-grid,
   .unit-result-list,
   .profile-card.standard .unit-result-list {
     grid-template-columns: 1fr;

@@ -100,6 +100,8 @@ function App() {
       ) : (
         <InfoMode />
       )}
+
+      <SeoContent />
     </main>
   );
 }
@@ -303,6 +305,41 @@ function InfoMode() {
           decisions should be checked against official records and by a qualified land professional.
         </p>
       </article>
+    </section>
+  );
+}
+
+function SeoContent() {
+  return (
+    <section className="seo-section" aria-labelledby="popular-conversions-title">
+      <div>
+        <p className="eyebrow">Popular conversions</p>
+        <h2 id="popular-conversions-title">Bangladesh Land Measurement Calculator</h2>
+        <p>
+          Use this land area calculator to convert Decimal, Shotangsho, Shotok, Satak, Katha, Bigha, Kani, Gonda,
+          Kora, Kranti, Til, Acre, square feet, and square meters. Decimal, Shotangsho, Shotok, and Satak are treated
+          as the same unit: 1 Decimal = 1 Shotangsho = 1 Shotok = 1 Satak = 435.6 square feet.
+        </p>
+      </div>
+
+      <div className="seo-grid">
+        <article>
+          <h3>Decimal to square feet</h3>
+          <p>1 Decimal, Shotangsho, Shotok, or Satak equals 435.6 square feet.</p>
+        </article>
+        <article>
+          <h3>Acre to Decimal</h3>
+          <p>1 Acre equals 100 Decimal and 43,560 square feet.</p>
+        </article>
+        <article>
+          <h3>Katha and Bigha</h3>
+          <p>The standard/common profile uses 1 Bigha = 33 Decimal and 20 Katha = 1 Bigha.</p>
+        </article>
+        <article>
+          <h3>Kani and Gonda</h3>
+          <p>Kani values vary locally, so this calculator keeps 40 Decimal, 120 Decimal, and 8-hat-nol profiles separate.</p>
+        </article>
+      </div>
     </section>
   );
 }
