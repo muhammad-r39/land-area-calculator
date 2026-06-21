@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import {
-  allUnitKeys,
+  inputUnitKeys,
   measurementProfiles,
   unitMeta,
   type MeasurementProfile,
@@ -49,6 +49,16 @@ function App() {
     }
   }, [fromUnit, inputProfile, inputValue, parsedValue]);
 
+  function handleInputProfileChange(nextProfileId: string) {
+    const nextProfile = measurementProfiles.find((profile) => profile.id === nextProfileId) ?? defaultInputProfile;
+
+    setInputProfileId(nextProfileId);
+
+    if (!canUseUnit(nextProfile, fromUnit)) {
+      setFromUnit("decimal");
+    }
+  }
+
   return (
     <main className="page-shell">
       <section className="hero">
@@ -82,7 +92,7 @@ function App() {
           fromUnit={fromUnit}
           setFromUnit={setFromUnit}
           inputProfileId={inputProfileId}
-          setInputProfileId={setInputProfileId}
+          setInputProfileId={handleInputProfileChange}
           inputProfile={inputProfile}
           sqft={calculation.sqft}
           error={calculation.error}
@@ -138,7 +148,7 @@ function CalculatorMode({
           <label>
             <span>Input unit</span>
             <select value={fromUnit} onChange={(event) => setFromUnit(event.target.value as UnitKey)}>
-              {allUnitKeys.map((unit) => (
+              {inputUnitKeys.map((unit) => (
                 <option key={unit} value={unit}>
                   {unitMeta[unit].label} / {unitMeta[unit].labelBn}
                 </option>
@@ -165,7 +175,7 @@ function CalculatorMode({
         {!selectedUnitAvailable && (
           <div className="warning">
             This input rule does not define <strong>{unitMeta[fromUnit].label}</strong>. Choose a matching rule or
-            use Decimal, Shotangsho, square feet, square meter, or Acre.
+            use Decimal / Shotangsho, square feet, square meter, or Acre.
           </div>
         )}
 
@@ -175,7 +185,7 @@ function CalculatorMode({
       {sqft !== null && (
         <>
           <section className="summary-grid">
-            <SummaryCard label="Decimal / Shotangsho" value={formatNumber(sqft / 435.6)} />
+            <SummaryCard label="Decimal / Shotangsho / Shotok" value={formatNumber(sqft / 435.6)} />
             <SummaryCard label="Square feet" value={formatNumber(sqft, 2)} />
             <SummaryCard label="Square meter" value={formatNumber(sqft / 10.7639104167097)} />
             <SummaryCard label="Acre" value={formatNumber(sqft / 43560, 6)} />

@@ -41,14 +41,19 @@ export const SQFT_PER_ACRE = 43560;
 export const SQFT_PER_SQM = 10.7639104167097;
 
 export const unitMeta: Record<UnitKey, UnitMeta> = {
-  sqft: { key: "sqft", label: "Square feet", labelBn: "বর্গফুট", shortLabel: "sq ft" },
+  sqft: { key: "sqft", label: "Square feet / Sq ft", labelBn: "বর্গফুট", shortLabel: "sq ft" },
   sqm: { key: "sqm", label: "Square meter", labelBn: "বর্গমিটার", shortLabel: "sq m" },
-  decimal: { key: "decimal", label: "Decimal", labelBn: "ডেসিমেল", shortLabel: "decimal" },
+  decimal: {
+    key: "decimal",
+    label: "Decimal / Shotangsho / Shotok / Satak",
+    labelBn: "ডেসিমেল / শতাংশ / শতক",
+    shortLabel: "decimal/shotangsho",
+  },
   shotangsho: { key: "shotangsho", label: "Shotangsho", labelBn: "শতাংশ", shortLabel: "shotangsho" },
   ojutangsho: { key: "ojutangsho", label: "Ojutangsho", labelBn: "অযুতাংশ", shortLabel: "ojutangsho" },
   acre: { key: "acre", label: "Acre", labelBn: "একর", shortLabel: "acre" },
   bigha: { key: "bigha", label: "Bigha", labelBn: "বিঘা", shortLabel: "bigha" },
-  katha: { key: "katha", label: "Katha", labelBn: "কাঠা", shortLabel: "katha" },
+  katha: { key: "katha", label: "Katha / Cottah", labelBn: "কাঠা", shortLabel: "katha" },
   chotak: { key: "chotak", label: "Chotak", labelBn: "ছটাক", shortLabel: "chotak" },
   kani: { key: "kani", label: "Kani", labelBn: "কানি", shortLabel: "kani" },
   gonda: { key: "gonda", label: "Gonda", labelBn: "গন্ডা", shortLabel: "gonda" },
@@ -199,3 +204,4 @@ export const measurementProfiles: MeasurementProfile[] = [
 ];
 
 export const allUnitKeys = Object.keys(unitMeta) as UnitKey[];
+export const inputUnitKeys = allUnitKeys.filter((unit) => unit !== "shotangsho");
